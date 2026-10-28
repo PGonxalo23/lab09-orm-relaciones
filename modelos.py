@@ -35,7 +35,7 @@ class CategoriaModel(Base):
     )
 
     productos: Mapped[list["ProductoModel"]] = relationship(
-        "ProductoModel", back_populates="categoria"
+        "ProductoModel", back_populates="categoria",cascade="all, delete-orphan"
     )
 
 
@@ -77,7 +77,4 @@ class EtiquetaModel(Base):
         "ProductoModel",
         secondary=producto_etiqueta,
         back_populates="etiquetas",
-    )
-productos: Mapped[list["ProductoModel"]] = relationship(
-        "ProductoModel", back_populates="categoria", cascade="all, delete-orphan"
     )
