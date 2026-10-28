@@ -78,3 +78,6 @@ class EtiquetaModel(Base):
         secondary=producto_etiqueta,
         back_populates="etiquetas",
     )
+productos: Mapped[list["ProductoModel"]] = relationship(
+        "ProductoModel", back_populates="categoria", cascade="all, delete-orphan"
+    )
